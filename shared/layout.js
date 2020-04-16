@@ -10,7 +10,9 @@ let layout = (props) => {
         return(
             <div>
                 <Head />
+                <Container>
                 <Navbar activeLink={props.activeLink}/>
+                </Container>
                 {props.children}
                 <Footer />
             </div>
@@ -20,8 +22,8 @@ let layout = (props) => {
     return(
         <div>
             <Head />
-            <Navbar activeLink={props.activeLink}/>
             <Container>
+            <Navbar activeLink={props.activeLink}/>
             {props.children}
             </Container>
             <Footer />

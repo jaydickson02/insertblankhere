@@ -9,8 +9,8 @@ import Container from 'react-bootstrap/Container'
 let navbar = (props) => {
 
     return(
-        <Container>
-        <Navbar varient="light" expand="sm" style={{height: '80px'}}>
+        
+        <Navbar varient="light" expand="sm" style={{paddingTop: '22px', paddingBottom:'22px'}}>
         <Navbar.Brand href="/">Presence</Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse className="justify-content-end" id="basic-navbar-nav">
@@ -20,7 +20,7 @@ let navbar = (props) => {
           </Nav>
         </Navbar.Collapse>
       </Navbar>
-      </Container>
+      
     )
 }
 
