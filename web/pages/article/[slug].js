@@ -41,7 +41,7 @@ const Post = (props) => {
     body = []
   } = props
   return (
-    <Layout structure={false}>
+    <Layout structure={false} activeLink={'/'}>
       <img src={urlFor(heroImage).width(3000).height(1000).url()} style={{maxWidth: '100%'}}></img>
 
     <Container>
