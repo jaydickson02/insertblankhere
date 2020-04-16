@@ -5,6 +5,7 @@ import BlockContent from '@sanity/block-content-to-react';
 import client from '../../shared/client';
 import SyntaxHighlighter from 'react-syntax-highlighter';
 import { atomOneDark } from 'react-syntax-highlighter/dist/cjs/styles/hljs';
+import Link from 'next/link';
 
 //Components
 import Layout from '../../shared/layout';
@@ -33,13 +34,25 @@ const serializers = {
 
 const Post = (props) => {
   const {
-    title = 'Missing title',
-    name = 'Missing name',
+    title = 'no article',
+    name,
     categories,
     authorImage,
     heroImage,
     body = []
   } = props
+
+  if(title == 'no article'){
+    return(
+      <Layout structure={false}>
+        <Container style={{height:'60vh'}}>
+          <h1>Article not found!</h1>
+          <h4>Check the URL for errors or head back to the <Link href={'/'}><a>Home Page</a></Link></h4>
+        </Container>
+      </Layout>
+    )
+  } 
+
   return (
     <Layout structure={false} activeLink={'/'}>
       <img src={urlFor(heroImage).width(3000).height(1000).url()} style={{maxWidth: '100%'}}></img>
@@ -51,7 +64,7 @@ const Post = (props) => {
         <Col>
         {authorImage && (
         <span>
-          <img src={urlFor(authorImage).width(50).url()} style={{display:'inline'}}/>
+          <Image src={urlFor(authorImage).width(50).url()} style={{display:'inline'}} roundedCircle/>
         </span>
         
       )
