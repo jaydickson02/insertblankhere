@@ -14,27 +14,39 @@ import Card from 'react-bootstrap/Card'
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Container from 'react-bootstrap/Container';
+import CardDeck from 'react-bootstrap/CardDeck';
+import CardColumns from 'react-bootstrap/CardColumns';
+import ListGroup from 'react-bootstrap/ListGroup';
+import Image from 'react-bootstrap/Image';
 
 function urlFor (source) {
   return imageUrlBuilder(client).image(source)
 }
 
 const Index = (props) => {
-    const { posts = [] } = props
-    console.log(posts)
+
+    //Organisation of featured posts
+    let { posts = [] } = props
+    posts = posts.slice(0, 10);
+
+    let jumboPost = posts[0]
+
+    let cardPosts = posts.slice(1,4);
+
+    let listPosts = posts.slice(5,10);
+
    
     return (
       
       <Layout activeLink={'/'}>
         
-        <Jumbotron style={{backgroundImage: urlFor(posts[0].mainImage).url()}}>
-          <h1>{posts[0].title}</h1>
+        <Jumbotron className ='jumbotron bg-dark text-white'>
+          <h1>{jumboPost.title}</h1>
           <p>
-            This is a simple hero unit, a simple jumbotron-style component for calling
-            extra attention to featured content or information.
+            {jumboPost.description}
           </p>
           <p>
-            <Link href="/article/[slug]" as={`/article/${posts[0].slug.current}`}>
+            <Link href="/article/[slug]" as={`/article/${jumboPost.slug.current}`}>
                 <a className="text-white">
                   <Button variant="primary">            
                       Read
@@ -43,38 +55,70 @@ const Index = (props) => {
             </Link>
           </p>
         </Jumbotron>
+
+        
         <Row>
-        {posts.map(
-          ({ _id, title = '', slug = '', _updatedAt = '', mainImage = ''}) =>
+          <Col lg={8}>
+        {cardPosts.map(
+          ({ _id, title = '', slug = '', _updatedAt = '', mainImage = '', description = ''}) =>
             slug && (
-              <Col sm={12} md={6} lg={4}>
-              <Container>
-              <Card key={_id} style={{ width: '18rem', marginBottom: '25px'}}>
-              <Card.Img variant="top" src={urlFor(mainImage).url()} style={{height:'180px'}}/>
-              <Card.Body>
-                <Card.Title>{title}</Card.Title>
-                <Card.Text>
-                  {new Date(_updatedAt).toDateString()}
-                </Card.Text>
-                <Card.Text>
-                  Some quick example text to build on the card title and make up the bulk of
-                  the card's content.
-                </Card.Text>
-                <Link href="/article/[slug]" as={`/article/${slug.current}`}>
-                  <a className="text-white">
-                    <Button variant="primary">            
-                        Read
-                    </Button>
-                  </a>
-                </Link>
-              </Card.Body>
-              </Card>
-              </Container>
-              </Col>
+                
+                  <Card key={_id} style={{marginBottom:'20px'}} >
+                    
+                        <Card.Body className="text-dark">
+                        <Link href="/article/[slug]" as={`/article/${slug.current}`}>
+                    <a>
+                        <Card.Title className="text-dark" as='h2'>
+                          {title}
+                        </Card.Title>
+
+                        </a>
+                  </Link>
+                  <small className="text-muted">{new Date(_updatedAt).toDateString()}</small>
+                          <Card.Text>
+                            {description}
+                          </Card.Text>
+                        </Card.Body>
+                    <Link href="/article/[slug]" as={`/article/${slug.current}`}>
+                    <a>
+                        <div style={{textAlign:'center'}}>
+                          <Card.Img 
+                            src={urlFor(mainImage).width(1600).height(600).url()} 
+                            style={{padding: '10px'}}
+
+                            className='rounded'
+                          >
+
+                          </Card.Img>
+                        </div>
+                    </a>
+                  </Link>
+                  </Card>
             )
         )}
-        </Row>
+        </Col>
+
+        <Col>
+          <ListGroup variant="flush">
+          {listPosts.map(
+            ({ _id, title = '', slug = '', _updatedAt = '', mainImage = '', description = ''}) =>
+            slug && (
+              <ListGroup.Item key={_id}>
+                <Link href="/article/[slug]" as={`/article/${slug.current}`}>
+                  <a>
+                    {title}
+                  </a>
+                </Link>
+                </ListGroup.Item>
+            )
+         )}
+          </ListGroup>
+        </Col>
+
+      </Row>
+      
       </Layout>
+      
     )
 }
 
