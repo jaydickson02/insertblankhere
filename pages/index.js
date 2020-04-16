@@ -99,6 +99,9 @@ const Index = (props) => {
         </Col>
 
         <Col>
+          <div style={{textAlign:'center'}}>
+            <h3>Recent Articles</h3>
+          </div>
           <ListGroup variant="flush">
           {listPosts.map(
             ({ _id, title = '', slug = '', _updatedAt = '', mainImage = '', description = ''}) =>
