@@ -6,6 +6,7 @@ import imageUrlBuilder from '@sanity/image-url';
 
 //Components
 import Layout from '../shared/layout'
+import CategoryBar from '../shared/categoryBar'
 
 //Bootstrap
 import Jumbotron from 'react-bootstrap/Jumbotron'
@@ -39,7 +40,7 @@ const Index = (props) => {
     return (
       
       <Layout activeLink={'/'}>
-        
+ 
         <Jumbotron className ='jumbotron bg-dark text-white'>
           <h1>{jumboPost.title}</h1>
           <p>
@@ -56,6 +57,7 @@ const Index = (props) => {
           </p>
         </Jumbotron>
 
+        <CategoryBar />
         
         <Row>
           <Col lg={8}>
