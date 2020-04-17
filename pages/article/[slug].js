@@ -13,6 +13,8 @@ import Image from 'react-bootstrap/Image';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
+import ListGroup from 'react-bootstrap/ListGroup';
+import Nav from 'react-bootstrap/Nav';
 
 function urlFor (source) {
   return imageUrlBuilder(client).image(source)
@@ -60,28 +62,33 @@ const Post = (props) => {
     <Container>
     <article>
       <h1 style={{marginTop:'25px', marginBottom:'30px'}}>{title}</h1>
-      <Row>
+      <Row style={{paddingBottom: '20px'}}>
         <Col>
         {authorImage && (
-        <span>
-          <Image src={urlFor(authorImage).width(50).url()} style={{display:'inline'}} roundedCircle/>
-        </span>
-        
-      )
-      }
-      <span style={{margin: '10px'}}>By {name}</span>
-        </Col>
+          <span>
+            <Image src={urlFor(authorImage).width(50).url()} style={{display:'inline'}} roundedCircle/>
+          </span>
+          )
+        }
        
-        <Col>
-      {categories && (
-        <ul>
-          Posted in
-          {categories.map(category => <li key={category}>{category}</li>)}
-        </ul>
-      )}
-      </Col>
+        
+          <span style={{margin: '15px'}}>By {name}</span>
       
-      </Row>
+          </Col>
+          
+        </Row>
+   
+        
+          <Row>
+              <Nav style={{paddingBottom: '30px'}}>
+                  <Nav.Item><Nav.Link style={{color: 'black'}}><h6>Tags:</h6></Nav.Link></Nav.Item>
+                  {categories.map(category => <Nav.Item><Nav.Link href={'/articles/' + category}><h6 key={category}>{category}</h6></Nav.Link></Nav.Item>)}
+              </Nav>
+          </Row>
+
+     
+      
+      
       
       <BlockContent
         blocks={body}
