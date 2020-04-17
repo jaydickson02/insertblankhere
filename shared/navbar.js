@@ -15,7 +15,7 @@ let navbar = (props) => {
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse className="justify-content-end" id="basic-navbar-nav">
           <Nav className="justify-content-end"  activeKey={props.activeLink}>
-            <Nav.Link href="/">Articles</Nav.Link>
+            <Nav.Link href="/articles/all">Articles</Nav.Link>
             <Nav.Link href="#link">Contact Us</Nav.Link>
           </Nav>
         </Navbar.Collapse>
