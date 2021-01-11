@@ -11,12 +11,12 @@ let navbar = (props) => {
     return(
         
         <Navbar varient="light" expand="sm" style={{paddingTop: '22px', paddingBottom:'22px'}}>
-        <Navbar.Brand href="/">Presence</Navbar.Brand>
+        <Navbar.Brand href="/"><str>insert</str> <i>blank</i></Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse className="justify-content-end" id="basic-navbar-nav">
           <Nav className="justify-content-end"  activeKey={props.activeLink}>
-            <Nav.Link href="/articles/all">Articles</Nav.Link>
-            <Nav.Link href="#link">Contact Us</Nav.Link>
+            <Nav.Link href="/articles/all">Content</Nav.Link>
+            <Nav.Link href="#link">Contact</Nav.Link>
           </Nav>
         </Navbar.Collapse>
       </Navbar>

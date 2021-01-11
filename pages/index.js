@@ -102,7 +102,7 @@ const Index = (props) => {
 
         <Col>
           <div style={{textAlign:'center'}}>
-            <h3>Recent Articles</h3>
+            <h3>Recent</h3>
           </div>
           <ListGroup variant="flush">
           {listPosts.map(
