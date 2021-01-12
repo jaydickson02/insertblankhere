@@ -11,7 +11,7 @@ let navbar = (props) => {
     return(
         
         <Navbar varient="light" expand="sm" style={{paddingTop: '22px', paddingBottom:'22px'}}>
-        <Navbar.Brand href="/"><b>insert</b> <i>blank</i></Navbar.Brand>
+        <Navbar.Brand href="/"><b>insert</b> <i>blank</i> <ins>here</ins></Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse className="justify-content-end" id="basic-navbar-nav">
           <Nav className="justify-content-end"  activeKey={props.activeLink}>
